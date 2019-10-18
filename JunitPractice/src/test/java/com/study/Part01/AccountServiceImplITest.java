@@ -1,5 +1,6 @@
 package com.study.Part01;
 
+import com.study.common.IntegrationTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -8,7 +9,6 @@ import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.isA;
 import static org.junit.Assert.assertNotEquals;
-import com.study.common.IntegrationTest;
 
 
 public class AccountServiceImplITest {
