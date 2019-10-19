@@ -1,6 +1,5 @@
 package com.study.Part01;
 
-import com.study.common.IntegrationTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -34,7 +33,6 @@ public class AccountServiceImplITest {
 
 
     @Test
-    @Category(IntegrationTest.class)
     public void testUpdateAccount(){
         Account oldAccount = new Account();
         oldAccount.setName("xiongzn002");
@@ -48,7 +46,6 @@ public class AccountServiceImplITest {
         assertNotEquals(name,expectAccountObj.getName());
     }
     @Test
-    @Category(IntegrationTest.class)
     public void testRemoveAccount(){
         Account toBeRemovedAccount = new Account();
         toBeRemovedAccount.setName("toBeRemoved");
