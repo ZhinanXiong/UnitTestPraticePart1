@@ -1,0 +1,33 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build') {
+
+      steps {
+        withMaven(maven : 'mavenWindows'){
+          bat 'mvn --version'
+        }
+      }
+    }
+    stage('Deploy') {
+
+      steps {
+        withMaven(maven : 'mavenWindows'){
+          bat 'mvn install  -Dmaven.test.skip=true'
+        }
+      }
+    }
+    stage('Test') {
+
+      steps {
+        withMaven(maven : 'mavenWindows'){
+          bat 'mvn clean test -Dmaven.test.failure.ignore=true'
+        }
+      }
+    }
+
+
+  }
+
+}
