@@ -1,9 +1,14 @@
 pipeline {
   agent any
-
   stages {
-    stage('Build') {
-
+    stage('Build and Pacakge') {
+      steps {
+        withMaven(maven : 'mavenWindows'){
+          bat 'mvn clean package -Dmaven.test.failure.ignore=true'
+        }
+      }
+    }
+    stage('Unit Test') {
       steps {
         withMaven(maven : 'mavenWindows'){
           bat 'mvn clean test -Dmaven.test.failure.ignore=true'
@@ -11,23 +16,11 @@ pipeline {
       }
     }
     stage('sonarqube') {
-
       steps {
         withMaven(maven : 'mavenWindows'){
           bat 'mvn sonar:sonar'
         }
       }
     }
-    stage('Test') {
-
-      steps {
-        withMaven(maven : 'mavenWindows'){
-          bat 'mvn clean test -Dmaven.test.failure.ignore=true'
-        }
-      }
-    }
-
-
   }
-
 }
