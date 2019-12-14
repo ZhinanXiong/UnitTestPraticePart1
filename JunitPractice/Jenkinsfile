@@ -6,15 +6,15 @@ pipeline {
 
       steps {
         withMaven(maven : 'mavenWindows'){
-          bat 'mvn --version'
+          bat 'mvn clean test -Dmaven.test.failure.ignore=true'
         }
       }
     }
-    stage('Deploy') {
+    stage('sonarqube') {
 
       steps {
         withMaven(maven : 'mavenWindows'){
-          bat 'mvn install  -Dmaven.test.skip=true'
+          bat 'mvn sonar:sonar'
         }
       }
     }
